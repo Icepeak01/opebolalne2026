@@ -60,16 +60,16 @@ export const VENUE_LOCATION =
 
 /* A single friendly line describing the final landmark for all routes. */
 export const VENUE_NOTE =
-  'All routes meet at Ikotun. From there it is a short bike (okada) or ' +
-  'tricycle (keke) ride to Abaranje — the hall is right by the road at ' +
-  'Better Life Bus Stop.';
+  'Most routes meet at Ikotun, then a short bike (okada) or tricycle (keke) ' +
+  'ride to Abaranje. Driving yourself? Head straight to Better Life Bus Stop, ' +
+  'Abaranje (off Ikotun) — the hall is right by the road.';
 
 /* ── Venue map ────────────────────────────────────────────────────────────
    This uses a Google Maps *search* embed pointed at the bus stop, so it works
    without coordinates or an API key. Once you know the exact hall, replace it
    with the "src" from Google Maps → your venue → Share → Embed a map.         */
 export const MAP_EMBED_SRC =
-  'https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d7927.810636912436!2d3.2341222!3d6.533641!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x103b850d5b8d40f1%3A0x7a1697fcdad72a64!2sbetter%20life%20bus%20stop%2C%2015%20Hon.%20Balo%20St%2C%20Abaranje%20Rd%2C%20Alimosho%2C%20Lagos%20100001%2C%20Lagos!5e0!3m2!1sen!2sng!4v1790487980817!5m2!1sen!2sng';
+  'https://maps.google.com/maps?q=Abaranje%20Better%20Life%20Bus%20Stop%20Ikotun%20Lagos&z=15&output=embed';
 
 /* ── Directions (text) ────────────────────────────────────────────────────
    Each route is a title plus an ordered list of steps. Edit freely.          */
@@ -101,7 +101,21 @@ export const DIRECTIONS = [
       'Drop at Better Life Bus Stop — the hall is right by the road.',
     ],
   },
+  {
+    axis: 'Coming with your own car',
+    icon: '🚗',
+    steps: [
+      'Head towards Ikotun, then onto Abaranje Road.',
+      'Continue to Better Life Bus Stop, Abaranje.',
+      'The hall is right by the road — tap “Open in Google Maps” below to navigate.',
+    ],
+  },
 ];
+
+/* Deep link for drivers: opens turn-by-turn directions to the venue. */
+export const MAPS_DIRECTIONS_URL =
+  'https://www.google.com/maps/dir/?api=1&destination=' +
+  encodeURIComponent('Better Life Bus Stop, Abaranje Rd, Alimosho, Lagos');
 
 /* ── RSVP ─────────────────────────────────────────────────────────────────
    Nigerian number: local 0810… becomes +234810… for call/WhatsApp links.     */
@@ -113,10 +127,15 @@ export const RSVP = {
 };
 
 /* ── Background video ─────────────────────────────────────────────────────
-                       */
+   Must be a DIRECT video URL (ends in .mp4) or a file placed in
+   client/public (then use e.g. '/hero.mp4'). Google Drive *share* links do
+   NOT work as a <video> source. Leave '' to show no video (the CSS background
+   is used instead).
+   NOTE: .MOV (QuickTime/HEVC from iPhones) usually will NOT play in browsers.
+   Convert it to .mp4 (H.264) for reliable playback.                          */
 export const BACKGROUND_VIDEO_SRC =
-  'https://storage.googleapis.com/oo-wedding-2026-media/pre-wedding%20shots/IMG_3249.mp4';
-
+  '';
+// 'https://storage.googleapis.com/oo-wedding-2026-media/pre-wedding%20shots/IMG_3249.MOV'
 /* ── Slideshow images ─────────────────────────────────────────────────── */
 export const SLIDESHOW_IMAGES = [
   'https://storage.googleapis.com/oo-wedding-2026-media/pre-wedding%20shots/IMG_3515.JPG',
@@ -145,7 +164,7 @@ export const BIRTHDAY = {
   countdownLabel: 'The same beautiful day 🎂',
 
   secret: {
-    enabled: true,
+    enabled: false,
     buttonHint: '🎂',
     title: 'Happy Birthday, my love',
     message:
