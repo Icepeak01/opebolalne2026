@@ -1,0 +1,12 @@
+# server/.gitignore
+node_modules
+
+# Secrets — never commit these
+.env
+.env.local
+*.json.key
+service-account*.json
+
+# Logs & editor cruft
+*.log
+.DS_Store

@@ -1,0 +1,17 @@
+{
+  "name": "wedding-site",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Monorepo for the Omobolanle & Opeyemi wedding website (client + server)",
+  "scripts": {
+    "dev": "concurrently -n client,server -c magenta,cyan \"npm:dev:client\" \"npm:dev:server\"",
+    "dev:client": "npm --prefix client run dev",
+    "dev:server": "npm --prefix server run dev",
+    "build": "npm --prefix client run build",
+    "start:server": "npm --prefix server run start",
+    "install:all": "npm --prefix client install && npm --prefix server install && npm install"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}

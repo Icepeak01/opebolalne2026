@@ -1,0 +1,16 @@
+# .gitignore (root)
+node_modules
+
+# Env files anywhere in the repo
+.env
+.env.local
+.env.*.local
+
+# Build output
+dist
+
+# OS / editor
+.DS_Store
+*.log
+.vscode
+.idea

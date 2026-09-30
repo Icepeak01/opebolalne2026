@@ -1,0 +1,13 @@
+# client/.gitignore
+node_modules
+dist
+dist-ssr
+
+# Local env files — never commit these
+.env
+.env.local
+.env.*.local
+
+# Logs & editor cruft
+*.log
+.DS_Store
